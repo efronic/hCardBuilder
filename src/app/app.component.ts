@@ -39,19 +39,15 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   formValueChanged() {
     this.hCardForm.valueChanges
-      // .pipe(takeWhile(() => this.componentActive))
+      .pipe(takeWhile(() => this.componentActive))
       .subscribe((mode) => {
         if (mode) {
           this.submitted = false;
           this.hCard = { ...this.hCard, ...this.hCardForm.value };
-          console.log('this.hCard ', this.hCard);
-          console.log('mode ', mode);
         }
       });
   }
   onFileSelected(event) {
-    console.log('event', event);
-
     if (
       event &&
       event.target.files.length > 0 &&
@@ -73,9 +69,6 @@ export class AppComponent implements OnInit, OnDestroy {
       };
     }
     this.selectedAvatar = event.target.files[0];
-    // this.hCardForm.patchValue({ avatar: this.selectedAvatar });
-
-    console.log('upload', this.selectedAvatar);
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
