@@ -1,0 +1,67 @@
+<section id="cardViewer" fxLayout fxLayout="row" fxLayoutAlign="center">
+  <div fxLayout fxLayoutAlign="center" fxFlex="60" fxFlex.md="60" fxFlex.sm="60" fxFlex.xs="100">
+    <mat-card fxFlex="column" fxLayoutGap="3px" class="mat-elevation-z1">
+      <mat-card-header fxLayout="row">
+        <div fxFlex="70">
+          <div mat-card-avatar><mat-icon>insert_emoticon</mat-icon></div>
+          <mat-card-title
+            >{{ this.hCard?.givenName }}
+            {{ this.hCard?.surname }}</mat-card-title
+          >
+          <mat-card-subtitle>hCard Builder</mat-card-subtitle>
+        </div>
+        <div *ngIf="this.hCard && this.hCard.avatar" fxFlex="30">
+          <img id="avatar" [src]="this.hCard.avatar.target" alt="Your Avatar" />
+        </div>
+      </mat-card-header>
+      <mat-card-content fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="3px">
+          <div fxLayout="row">
+            <div fxFlex fxFlex="18">
+              <strong>EMAIL: </strong>
+            </div>
+            <div fxFlex="80">{{ this.hCard?.email }}</div>
+          </div>
+          <div><mat-divider></mat-divider></div>
+          <div fxLayout="row">
+            <div fxFlex fxFlex="18"><strong>PHONE: </strong></div>
+            <div fxFlex fxFlex="80">{{ this.hCard?.phone }}</div>
+          </div>
+          <div><mat-divider></mat-divider></div>
+          <div fxLayout="row">
+            <div fxFlex fxFlex="18"><strong>ADDRESS: </strong></div>
+            <div fxFlex fxFlex="80">
+              {{ this.hCard?.houseno }} {{ this.hCard?.street }}
+            </div>
+          </div>
+          <div><mat-divider></mat-divider></div>
+          <div fxLayout="row" *ngIf="this.hCard && this.hCard.suburb">
+            <div fxFlex fxFlex="18"></div>
+            <div>{{ this.hCard?.suburb }}, {{ this.hCard?.state }}</div>
+          </div>
+          <div *ngIf="this.hCard && this.hCard.suburb">
+            <mat-divider></mat-divider>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex="50">
+              <div fxFlex="36"><strong>POSTCODE: </strong></div>
+              <div fxFlex="60">{{ this.hCard?.postcode }}</div>
+            </div>
+            <div fxFlex="50">
+              <div fxFlex="36"><strong>COUNTRY: </strong></div>
+              <div fxFlex="60">{{ this.hCard?.country }}</div>
+            </div>
+          </div>
+          <div><mat-divider></mat-divider></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+<!--
+<p>hcardviewer works!</p>
+<p>Form Value: {{ hCard?.country }}</p>
+<p>Form Status: {{ hCard?.email }}</p>
+<p>
+  Form Status:
+</p> -->

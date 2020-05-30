@@ -1,0 +1,211 @@
+<section
+  id="hCardBuilder"
+  fxLayout="row"
+  fxLayout.lg="row"
+  fxLayout.md="row"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="15px"
+>
+  <div
+    fxLayout
+    fxLayoutAlign="center center"
+    fxFlex="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+  >
+    <mat-card
+      fxFlex="column"
+      fxLayoutGap="10px"
+      fxFlex="98"
+      class="mat-elevation-z1"
+    >
+      <mat-card-header>
+        <div mat-card-avatar><mat-icon>topic</mat-icon></div>
+        <mat-card-title>hCard Builder</mat-card-title>
+        <mat-card-subtitle
+          ><a href="https://github.com/efronic">Github</a></mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content fxLayout="column">
+        <form
+          fxLayout="column"
+          [formGroup]="hCardForm"
+          fxLayout="column"
+          id="createForm"
+        >
+          <div class="divider" fxFlex>
+            PERSONAL DETAILS
+            <mat-divider></mat-divider>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>GIVEN NAME</mat-label>
+              <mat-icon matPrefix>person_outline</mat-icon>
+              <input
+                matInput
+                placeholder="GIVEN NAME"
+                name="givenname"
+                id="givenNameInput"
+                formControlName="givenName"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>SURNAME</mat-label>
+              <mat-icon matPrefix>person</mat-icon>
+              <input
+                matInput
+                placeholder="SURNAME"
+                name="surname"
+                formControlName="surname"
+              />
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>EMAIL</mat-label>
+              <mat-icon matPrefix>alternate_email</mat-icon>
+              <input
+                matInput
+                placeholder="EMAIL"
+                name="email"
+                formControlName="email"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>PHONE</mat-label>
+              <mat-icon matPrefix>phone</mat-icon>
+              <input
+                matInput
+                placeholder="PHONE"
+                name="phone"
+                formControlName="phone"
+              />
+            </mat-form-field>
+          </div>
+          <div class="divider" fxFlex>
+            ADDRESS
+            <mat-divider></mat-divider>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>HOUSE NAME OR #</mat-label>
+              <mat-icon matPrefix>person_pin</mat-icon>
+              <input
+                matInput
+                placeholder="HOUSE NAME OR #"
+                name="houseno"
+                formControlName="houseno"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>STREET</mat-label>
+              <mat-icon matPrefix>multiple_stop</mat-icon>
+              <input
+                matInput
+                placeholder="STREET"
+                name="street"
+                formControlName="street"
+              />
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>SUBURB</mat-label>
+              <mat-icon matPrefix>business</mat-icon>
+              <input
+                matInput
+                placeholder="SUBURB"
+                name="suburb"
+                formControlName="suburb"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>STATE</mat-label>
+              <mat-icon matPrefix>my_location</mat-icon>
+              <input
+                matInput
+                placeholder="STATE"
+                name="state"
+                formControlName="state"
+              />
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>POSTCODE</mat-label>
+              <mat-icon matPrefix>local_post_office</mat-icon>
+              <input
+                matInput
+                type="number"
+                placeholder="POSTCODE"
+                name="postcode"
+                formControlName="postcode"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45" appearance="outline">
+              <mat-label>COUNTRY</mat-label>
+              <mat-icon matPrefix>outlined_flag</mat-icon>
+              <input
+                matInput
+                placeholder="COUNTRY"
+                name="country"
+                formControlName="country"
+              />
+            </mat-form-field>
+          </div>
+          <span *ngIf="this.submitted && this.hCardForm.controls.avatar.errors">
+            <p style="color: red;"> * Please upload an avatar</p>
+          </span>
+        </form>
+      </mat-card-content>
+      <mat-card-actions
+        fxLayoutAlign="center"
+        fxLayout="row"
+        fxLayout.lg="row"
+        fxLayout.md="row"
+        fxLayout.sm="column"
+        fxLayout.xs="column"
+        fxLayoutGap="15px"
+      >
+        <input
+          type="file"
+          #fileInput
+          style="display: none;"
+          accept="image/png"
+          (change)="onFileSelected($event)"
+        />
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+          Upload Avatar
+        </button>
+
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          (click)="submit()"
+        >
+          Create hCard
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div
+    fxLayout
+    fxLayoutAlign="center"
+    fxFlex="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+  >
+    <mat-card
+      fxFlex="column"
+      fxFlex="98"
+      fxLayoutGap="10px"
+      class="mat-elevation-z1"
+      ><app-hcardviewer [hCard]="this.hCard"></app-hcardviewer>
+    </mat-card>
+  </div>
+</section>
+<!-- <p>Form Value: {{ hCardForm.value | json }}</p>
+<p>Form Status: {{ hCardForm.status | json }}</p> -->
