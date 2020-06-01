@@ -24,26 +24,76 @@
       <mat-card-content fxLayout="column">
         <div fxLayout="column" fxLayoutGap="3px">
           <div fxLayout="row">
-            <div fxFlex fxFlex="18">
+            <div
+              fxFlex
+              fxFlex="18"
+              fxFlex.md="30"
+              fxFlex.sm="30"
+              fxFlex.xs="30"
+            >
               <strong>EMAIL: </strong>
             </div>
-            <div fxFlex="80">{{ this.hCard?.email }}</div>
+            <div
+              fxFlex
+              fxFlex="80"
+              fxFlex.md="70"
+              fxFlex.sm="70"
+              fxFlex.xs="70"
+            >
+              {{ this.hCard?.email }}
+            </div>
           </div>
           <div><mat-divider></mat-divider></div>
           <div fxLayout="row">
-            <div fxFlex fxFlex="18"><strong>PHONE: </strong></div>
-            <div fxFlex fxFlex="80">{{ this.hCard?.phone }}</div>
+            <div
+              fxFlex
+              fxFlex="18"
+              fxFlex.md="30"
+              fxFlex.sm="30"
+              fxFlex.xs="30"
+            >
+              <strong>PHONE: </strong>
+            </div>
+            <div
+              fxFlex
+              fxFlex="80"
+              fxFlex.md="70"
+              fxFlex.sm="70"
+              fxFlex.xs="70"
+            >
+              {{ this.hCard?.phone }}
+            </div>
           </div>
           <div><mat-divider></mat-divider></div>
           <div fxLayout="row">
-            <div fxFlex fxFlex="18"><strong>ADDRESS: </strong></div>
-            <div fxFlex fxFlex="80">
+            <div
+              fxFlex
+              fxFlex="18"
+              fxFlex.md="30"
+              fxFlex.sm="30"
+              fxFlex.xs="30"
+            >
+              <strong>ADDRESS: </strong>
+            </div>
+            <div
+              fxFlex
+              fxFlex="80"
+              fxFlex.md="70"
+              fxFlex.sm="70"
+              fxFlex.xs="70"
+            >
               {{ this.hCard?.houseno }} {{ this.hCard?.street }}
             </div>
           </div>
           <div><mat-divider></mat-divider></div>
           <div fxLayout="row" *ngIf="this.hCard && this.hCard.suburb">
-            <div fxFlex fxFlex="18"></div>
+            <div
+              fxFlex
+              fxFlex="18"
+              fxFlex.md="30"
+              fxFlex.sm="30"
+              fxFlex.xs="30"
+            ></div>
             <div>{{ this.hCard?.suburb }}, {{ this.hCard?.state }}</div>
           </div>
           <div *ngIf="this.hCard && this.hCard.suburb">
@@ -51,12 +101,20 @@
           </div>
           <div fxLayout="row">
             <div fxFlex="50">
-              <div fxFlex="36"><strong>POSTCODE: </strong></div>
-              <div fxFlex="60">{{ this.hCard?.postcode }}</div>
+              <div fxFlex.lg="40" fxFlex.md="50" fxFlex.xl="36">
+                <strong>POSTCODE: </strong>
+              </div>
+              <div fxFlex.lg="60" fxFlex.md="50" fxFlex.xl="60">
+                {{ this.hCard?.postcode }}
+              </div>
             </div>
             <div fxFlex="50">
-              <div fxFlex="36"><strong>COUNTRY: </strong></div>
-              <div fxFlex="60">{{ this.hCard?.country }}</div>
+              <div fxFlex.lg="36" fxFlex.md="50" fxFlex.xl="36">
+                <strong>COUNTRY: </strong>
+              </div>
+              <div fxFlex.lg="60" fxFlex.md="50" fxFlex.xl="60">
+                {{ this.hCard?.country }}
+              </div>
             </div>
           </div>
           <div><mat-divider></mat-divider></div>
