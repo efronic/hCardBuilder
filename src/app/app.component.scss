@@ -1,4 +1,12 @@
-
 .divider {
   padding-bottom: 1em;
+}
+.text-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.dropzone {
+  display: table;
+  background-color: #eee;
+  border: dotted 1px #aaa;
 }

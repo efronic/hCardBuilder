@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeWhile } from 'rxjs/operators';
 import { HCard } from './_models/hCard';
+import { FileHandle } from './_directives/dragDrop.directive';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
   formIsValid = false;
   componentActive = true;
   submitted = false;
+  files: FileHandle[] = [];
+
   title = 'hCardBuilder';
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
   ngOnInit() {
@@ -69,6 +72,20 @@ export class AppComponent implements OnInit, OnDestroy {
       };
     }
     this.selectedAvatar = event.target.files[0];
+  }
+
+  filesDropped(files: FileHandle[]): void {
+    this.files = files;
+    this.selectedAvatar = this.files[0].file;
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedAvatar);
+    reader.onload = () => {
+      this.hCardForm.get('avatar').setValue({
+        avatarName: this.selectedAvatar.name,
+        avatarType: this.selectedAvatar.type,
+        target: reader.result,
+      });
+    };
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

@@ -155,6 +155,16 @@
               />
             </mat-form-field>
           </div>
+          <div
+            class="dropZone"
+            appDrag
+            (files)="filesDropped($event)"
+            fxLayout="row"
+          >
+            <div class="text-wrapper">
+              <div class="centered">Drop your file here!</div>
+            </div>
+          </div>
           <span *ngIf="this.submitted && this.hCardForm.controls.avatar.errors">
             <p style="color: red;">* Please upload an avatar</p>
           </span>
